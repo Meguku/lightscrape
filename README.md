@@ -10,3 +10,4 @@ E.g:<br />
 <h2>Requirements: </h2>
 * Selenium Chromedriver (Windows or Linux) in root dir
 * Wget
+- No problems exist
