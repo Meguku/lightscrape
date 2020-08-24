@@ -1,16 +1,32 @@
 from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
-import wget, random, string, os, selenium, time, sys
+import wget, random, string, os, selenium, sys, platform
 
 options = Options()
 options.add_argument("--headless")
 options.add_argument("--window-size=1920x1080")
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
-webdriver = "chromedriver.exe"
 
 BASE_URL = 'https://prnt.sc/'
 lower_alphabet = string.ascii_lowercase
+
+if platform.system() == 'Windows':
+    webdriver = "chromedriver.exe"
+elif platform.system() == 'Linux':
+    webdriver = "chromedriver"
+else:
+    print("Not supported OS. (Only Windows and Linux)")
+
+driver = Chrome(options=options, executable_path=webdriver)
+
+try:
+    os.mkdir('shots')
+except:
+    print('Dir "shots" exists')
+finally:
+    os.chdir('shots')
+
 def randNL():
     list = []
     for i in range(6):
@@ -21,15 +37,6 @@ def randNL():
             list.append(random.choice(lower_alphabet))
     END_URL = ''.join(map(str, list))
     return END_URL
-   
-driver = Chrome(options=options, executable_path=webdriver)
-
-try:
-    os.mkdir('shots')
-except:
-    print('Dir "shots" exists')
-finally:
-    os.chdir('shots')
 
 def main(i):
     for n in range(int(i)):
