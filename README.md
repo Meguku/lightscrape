@@ -8,5 +8,5 @@ E.g:<br />
 <code>lightscrape.py 5</code>
 
 <h2>Requirements: </h2>
--    Selenium Chromedriver (Windows or Linux) in root dir
--    Wget
+	-	Selenium Chromedriver (Windows or Linux) in root dir
+	-	Wget
